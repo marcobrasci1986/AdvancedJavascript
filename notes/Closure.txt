@@ -1,0 +1,6 @@
+Closure if when a function 'remembers' its lexical scope
+even when the function is executed outside that lexical scope.
+
+Classic module pattern:
+1. Function wrapper
+2. Return at least one function that has access to inner function vars
