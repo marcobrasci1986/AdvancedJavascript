@@ -1,0 +1,20 @@
+4 Rules:
+---------
+Call site -> Where and how the function is called. --> only thing that matters
+
+this -> always an object (not primitive or boolean)
+
+
+1. Is called with 'new' : if so use that object
+2. Explicit binding rule: .call() or .apply(); -> foo.call(obj) -> use obj as my this
+3. Implicit binding rule: a dot -> object.foo() -> this = base or context object
+4. Default binding rule:
+in strict -> this = undefined
+not in strict -> this = window object
+
+
+new keyword:
+1. Brand new object is created
+2. Object gets link to a different object. *
+3. New object is this.
+4. Implicitly return the object;

@@ -1,0 +1,2 @@
+1. No global vars -> IIFE
+2. Hoisting overrides function with the same name (last declared wins)
