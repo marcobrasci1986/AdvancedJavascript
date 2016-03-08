@@ -1,0 +1,27 @@
+Javascript is a compiled language, but not like Java.
+
+window == global scope
+
+LHS -> Left hand side (=) -> target
+RHS -> Right Hand side -> source
+
+'use strict'; -> var needs to be declared (LHS)
+
+undefined != undeclared;
+
+undefined means is declared but with a special value. Is an actual value
+undefined is a type
+
+
+function first ->  function declaration
+var foo = function(){}
+    -> named function expression (anonymous function) (IIFE)
+
+
+lexical scope -> compile time scope
+
+eval()
+
+------------------------------------------
+
+Hoisting -> compiler pulls out declarations first. Function first then vars
