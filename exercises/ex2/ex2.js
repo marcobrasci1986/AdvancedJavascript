@@ -1,100 +1,120 @@
-// assume this data came from the database
-var notes = [
-	"This is the first note I've taken!",
-	"Now is the time for all good men to come to the aid of their country.",
-	"The quick brown fox jumped over the moon."
-];
+var NotesManager = (function () {
+    var publicApi = {
+        init: init,
+        loadData: loadData
+    };
 
-function addNote(note) {
-	$("#notes").prepend(
-		$("<a href='#'></a>")
-		.addClass("note")
-		.text(note)
-	);
-}
+    var notes = []
 
-function addCurrentNote() {
-	var current_note = $("#note").val();
+    // PRIVATE Methods
+    function addNote(note) {
+        $("#notes").prepend(
+            $("<a href='#'></a>")
+                .addClass("note")
+                .text(note)
+        );
+    }
 
-	if (current_note) {
-		notes.push(current_note);
-		addNote(current_note);
-		$("#note").val("");
-	}
-}
+    function addCurrentNote() {
+        var current_note = $("#note").val();
 
-function showHelp() {
-	$("#help").show();
+        if (current_note) {
+            notes.push(current_note);
+            addNote(current_note);
+            $("#note").val("");
+        }
+    }
 
-	document.addEventListener("click",function __handler__(evt){
-		evt.preventDefault();
-		evt.stopPropagation();
-		evt.stopImmediatePropagation();
+    function showHelp() {
+        $("#help").show();
 
-		document.removeEventListener("click",__handler__,true);
-		hideHelp();
-	},true);
-}
+        document.addEventListener("click", function __handler__(evt) {
+            evt.preventDefault();
+            evt.stopPropagation();
+            evt.stopImmediatePropagation();
 
-function hideHelp() {
-	$("#help").hide();
-}
+            document.removeEventListener("click", __handler__, true);
+            hideHelp();
+        }, true);
+    }
 
-function handleOpenHelp(evt) {
-	if (!$("#help").is(":visible")) {
-		evt.preventDefault();
-		evt.stopPropagation();
+    function hideHelp() {
+        $("#help").hide();
+    }
 
-		showHelp();
-	}
-}
+    function handleOpenHelp(evt) {
+        if (!$("#help").is(":visible")) {
+            evt.preventDefault();
+            evt.stopPropagation();
 
-function handleAddNote(evt) {
-	addCurrentNote();
-}
+            showHelp();
+        }
+    }
 
-function handleEnter(evt) {
-	if (evt.which == 13) {
-		addCurrentNote();
-	}
-}
+    function handleAddNote(evt) {
+        addCurrentNote();
+    }
 
-function handleDocumentClick(evt) {
-	$("#notes").removeClass("active");
-	$("#notes").children(".note").removeClass("highlighted");
-}
+    function handleEnter(evt) {
+        if (evt.which == 13) {
+            addCurrentNote();
+        }
+    }
 
-function handleNoteClick(evt) {
-	evt.preventDefault();
-	evt.stopPropagation();
+    function handleDocumentClick(evt) {
+        $("#notes").removeClass("active");
+        $("#notes").children(".note").removeClass("highlighted");
+    }
 
-	$("#notes").addClass("active");
-	$("#notes").children(".note").removeClass("highlighted");
-	$(evt.target).addClass("highlighted");
-}
+    function handleNoteClick(evt) {
+        evt.preventDefault();
+        evt.stopPropagation();
 
-function init() {
-	// build the initial list from the existing `notes` data
-	var html = "";
-	for (i=0; i<notes.length; i++) {
-		html += "<a href='#' class='note'>" + notes[i] + "</a>";
-	}
-	$("#notes").html(html);
+        $("#notes").addClass("active");
+        $("#notes").children(".note").removeClass("highlighted");
+        $(evt.target).addClass("highlighted");
+    }
 
-	// listen to "help" button
-	$("#open_help").bind("click",handleOpenHelp);
+    function init() {
+        // build the initial list from the existing `notes` data
+        var html = "";
+        for (i = 0; i < notes.length; i++) {
+            html += "<a href='#' class='note'>" + notes[i] + "</a>";
+        }
+        $("#notes").html(html);
 
-	// listen to "add" button
-	$("#add_note").bind("click",handleAddNote);
+        // listen to "help" button
+        $("#open_help").bind("click", handleOpenHelp);
 
-	// listen for <enter> in text box
-	$("#new_note").bind("keypress",handleEnter);
+        // listen to "add" button
+        $("#add_note").bind("click", handleAddNote);
 
-	// listen for clicks outside the notes box
-	$(document).bind("click",handleDocumentClick);
+        // listen for <enter> in text box
+        $("#new_note").bind("keypress", handleEnter);
 
-	// listen for clicks on note elements
-	$("#notes").on("click",".note",handleNoteClick);
-}
+        // listen for clicks outside the notes box
+        $(document).bind("click", handleDocumentClick);
 
-$(document).ready(init);
+        // listen for clicks on note elements
+        $("#notes").on("click", ".note", handleNoteClick);
+    }
+
+    function loadData(data) {
+        for (var i = 0; i < data.length; i++) {
+            notes.push(data[i]);
+        }
+    }
+
+
+    return publicApi
+
+})();
+
+NotesManager.loadData([
+    "This is the first note I've taken!",
+    "Now is the time for all good men to come to the aid of their country.",
+    "The quick brown fox jumped over the moon."
+]);
+
+
+$(document).ready(NotesManager.init);
