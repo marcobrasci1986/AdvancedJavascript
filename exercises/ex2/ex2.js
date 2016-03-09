@@ -1,3 +1,6 @@
+/**
+ * Classic module pattern
+ */
 var NotesManager = (function () {
     var publicApi = {
         init: init,

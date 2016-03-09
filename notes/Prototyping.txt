@@ -1,0 +1,25 @@
+Object != Class
+
+A constructor makes an object linked to its own prototype
+
+Circle: a function
+Square: an Object
+
+__proto__ = dunder proto
+
+
+Quiz:
+------
+
+1. What is a constructor?
+-> A function that is called with the new keyword.
+
+2. What is [[Prototype]]?
+-> Linkage from one object to another object
+
+3. Delegates up the chain just as in Lexical scope
+
+4. How do we find out where an object's [[Prototype]] points to?
+__proto__
+Object.getProtoypeOf();
+constructor.prototype (hacky)

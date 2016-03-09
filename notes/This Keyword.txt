@@ -13,8 +13,9 @@ in strict -> this = undefined
 not in strict -> this = window object
 
 
-new keyword:
+new keyword -> var a1 = new Foo("a1");:
+-----------------
 1. Brand new object is created
-2. Object gets link to a different object. *
+2. Object gets link to a different object. -> Prototype
 3. New object is this.
 4. Implicitly return the object;

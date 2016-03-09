@@ -1,4 +1,4 @@
-Closure if when a function 'remembers' its lexical scope
+Closure: when a function 'remembers' its lexical scope
 even when the function is executed outside that lexical scope.
 
 Classic module pattern:
