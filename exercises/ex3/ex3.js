@@ -22,6 +22,8 @@ NotesManager.prototype.addCurrentNote = function () {
 };
 
 NotesManager.prototype.showHelp = function () {
+
+    var self = this;
     this.$help.show();
 
     document.addEventListener("click", function __handler__(evt) {
@@ -30,7 +32,7 @@ NotesManager.prototype.showHelp = function () {
         evt.stopImmediatePropagation();
 
         document.removeEventListener("click", __handler__, true);
-        hideHelp();
+        self.hideHelp();
     }, true);
 };
 
@@ -43,7 +45,7 @@ NotesManager.prototype.handleOpenHelp = function (evt) {
         evt.preventDefault();
         evt.stopPropagation();
 
-        showHelp();
+        this.showHelp();
     }
 };
 
@@ -57,7 +59,7 @@ NotesManager.prototype.handleEnter = function (evt) {
     }
 };
 
-NotesManager.prototype.handleAddNote = function (evt) {
+NotesManager.prototype.handleDocumentClick = function (evt) {
     this.$notes.removeClass("active");
     this.$notes.children(".note").removeClass("highlighted");
 };
@@ -95,6 +97,7 @@ NotesManager.prototype.init = function (opts) {
 
     // listen to "help" button
     this.$open_help.bind("click", this.handleOpenHelp.bind(this));
+
 
     // listen to "add" button
     this.$add_note.bind("click", this.handleAddNote.bind(this));

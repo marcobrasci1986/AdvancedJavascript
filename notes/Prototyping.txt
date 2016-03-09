@@ -23,3 +23,11 @@ Quiz:
 __proto__
 Object.getProtoypeOf();
 constructor.prototype (hacky)
+
+
+-------------------------------------------
+OLOO: Objects Linked to Other Objects
+
+// Create one object that is linked for delegation to another object
+var Button = Object.create(Widget);
+

@@ -13,7 +13,7 @@ var Widget = {
 		}
 	}
 };
-
+// Create one object that is linked for delegation to another object
 var Button = Object.create(Widget);
 
 Button.setup = function(width,height,label){
@@ -35,7 +35,9 @@ Button.onClick = function(evt) {
 $(document).ready(function(){
 	var $body = $(document.body);
 
+	// 1. create
 	var btn1 = Object.create(Button);
+	// 2. init
 	btn1.setup(125,30,"Hello");
 
 	var btn2 = Object.create(Button);
