@@ -13,9 +13,9 @@ undefined means is declared but with a special value. Is an actual value
 undefined is a type
 
 
-function first ->  function declaration
+function first ->  function declaration -> hoisted
 var foo = function(){}
-    -> named function expression (anonymous function) (IIFE)
+    -> named function expression (anonymous function) (IIFE) -> not hoisted
 
 
 lexical scope -> compile time scope
@@ -24,5 +24,3 @@ eval()
 
 ------------------------------------------
 
-Hoisting -> compiler pulls out declarations first. Function first then vars.
-Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope (to the top of the current script or the current function).
