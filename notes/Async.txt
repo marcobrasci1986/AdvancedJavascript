@@ -1,0 +1,6 @@
+Callback hell: giving control of you program to a third party lib (inversion of control)
+
+Callback -> A third party lib will call you callback when its done -> you lose control.
+
+Promise -> A promise future value. Tx at burger king.
+You listen for a success or error function. You control when the success function runs.
